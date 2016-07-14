@@ -1,0 +1,15 @@
+db:
+    image: mysql:latest
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: twivam
+    volumes:
+        - /vagrant/twivam/db/datadir:/var/lib/mysql
+web:
+    build: web
+    volumes:
+        - /vagrant/twivam/web/html:/var/www/html
+    links:
+        - db:mysql
+    ports:
+        - 8080:80
