@@ -12,4 +12,12 @@ web:
     links:
         - db:mysql
     ports:
-        - 8080:80
+        - 50000:80
+pma:
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+        - db:mysql
+    ports:
+        - 50001:80
+    environment:
+        PMA_HOST: mysql
